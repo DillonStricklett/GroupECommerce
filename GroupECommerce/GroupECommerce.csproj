@@ -71,6 +71,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductContext.cs" />
+    <Compile Include="ProductDb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Migrations\202008052026147_Initial.resx">
