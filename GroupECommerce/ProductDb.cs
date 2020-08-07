@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace GroupECommerce
 {
-    class ProductDb
+    static class ProductDb
     {
         public static List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            using (var context = new ProductContext())
+			{
+                return context.Products.ToList<Product>();
+			}
         }
 
         public static Product Add(Product p)
