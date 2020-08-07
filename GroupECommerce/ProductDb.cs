@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,12 @@ namespace GroupECommerce
 
         public static Product Update(Product p)
         {
-            throw new NotImplementedException();
+            using (var context = new ProductContext())
+			{
+                context.Entry(p).State = EntityState.Modified;
+                context.SaveChanges();
+                return p;
+			}
         }
 
         public static void Delete(Product p)
