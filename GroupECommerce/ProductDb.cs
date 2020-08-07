@@ -18,7 +18,12 @@ namespace GroupECommerce
 
         public static Product Add(Product p)
         {
-            throw new NotImplementedException();
+            using (var context = new ProductContext())
+			{
+                context.Products.Add(p);
+                context.SaveChanges();
+                return p;
+			}
         }
 
         public static Product Update(Product p)
