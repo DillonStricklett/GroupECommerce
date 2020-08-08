@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace GroupECommerce
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
-    }
+
+		private void addProductBtn_Click(object sender, EventArgs e)
+		{
+            AddProduct secondForm = new AddProduct();
+            secondForm.Show();
+		}
+	}
 }
