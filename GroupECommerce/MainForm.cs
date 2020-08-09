@@ -43,6 +43,14 @@ namespace GroupECommerce
             allProductsCbo.DisplayMember = nameof(Product.Title);
         }
 
+		private void updateProductBtn_Click(object sender, EventArgs e)
+		{
+            UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem);
+            updateForm.ShowDialog();
+
+            populateProductComboBox();
+        }
+
         private void deleteProductBtn_Click(object sender, EventArgs e)
         {
             Product currProduct = allProductsCbo.SelectedItem as Product;
