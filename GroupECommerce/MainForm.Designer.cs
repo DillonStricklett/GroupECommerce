@@ -65,13 +65,14 @@
             this.deleteProductBtn.TabIndex = 2;
             this.deleteProductBtn.Text = "Delete Product";
             this.deleteProductBtn.UseVisualStyleBackColor = true;
+            this.deleteProductBtn.Click += new System.EventHandler(this.deleteProductBtn_Click);
             // 
-            // comboBox1
+            // allProductsCbo
             // 
             this.allProductsCbo.FormattingEnabled = true;
             this.allProductsCbo.Location = new System.Drawing.Point(28, 69);
             this.allProductsCbo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.allProductsCbo.Name = "comboBox1";
+            this.allProductsCbo.Name = "allProductsCbo";
             this.allProductsCbo.Size = new System.Drawing.Size(147, 24);
             this.allProductsCbo.TabIndex = 3;
             // 
