@@ -20,8 +20,15 @@ namespace GroupECommerce
 		private void addProductBtn_Click(object sender, EventArgs e)
 		{
             AddProduct secondForm = new AddProduct();
+            secondForm.FormClosed += SecondForm_FormClosed;
             secondForm.Show();
+
 		}
+
+        private void SecondForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            populateProductComboBox();
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
