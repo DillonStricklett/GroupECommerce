@@ -22,5 +22,13 @@ namespace GroupECommerce
             AddProduct secondForm = new AddProduct();
             secondForm.Show();
 		}
-	}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            List<Product> allProducts = ProductDb.GetAllProducts();
+
+            allProductsCbo.DataSource = allProducts;
+            allProductsCbo.DisplayMember = nameof(Product.Title);
+        }
+    }
 }
