@@ -30,5 +30,10 @@ namespace GroupECommerce
             allProductsCbo.DataSource = allProducts;
             allProductsCbo.DisplayMember = nameof(Product.Title);
         }
-    }
+
+		private void updateProductBtn_Click(object sender, EventArgs e)
+		{
+            UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem);
+		}
+	}
 }
