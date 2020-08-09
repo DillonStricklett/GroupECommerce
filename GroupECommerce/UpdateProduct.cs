@@ -16,9 +16,17 @@ namespace GroupECommerce
 		{
 			InitializeComponent();
 			this.product = product;
+			InitializeUpdate();
 		}
 
 		private Product product;
+
+		private void InitializeUpdate()
+		{
+			titleBox.Text = product.Title;
+			priceBox.Text = product.Price.ToString();
+			catBox.Text = product.Category;
+		}
 
 		private void updateBtn_Click(object sender, EventArgs e)
 		{

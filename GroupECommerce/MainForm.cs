@@ -34,6 +34,7 @@ namespace GroupECommerce
 		private void updateProductBtn_Click(object sender, EventArgs e)
 		{
             UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem);
+            updateForm.ShowDialog();
 		}
 	}
 }
