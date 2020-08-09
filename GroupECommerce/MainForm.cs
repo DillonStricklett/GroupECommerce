@@ -25,10 +25,29 @@ namespace GroupECommerce
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            populateProductComboBox();
+        }
+
+        private void populateProductComboBox()
+        {
             List<Product> allProducts = ProductDb.GetAllProducts();
 
             allProductsCbo.DataSource = allProducts;
             allProductsCbo.DisplayMember = nameof(Product.Title);
+        }
+
+        private void deleteProductBtn_Click(object sender, EventArgs e)
+        {
+            Product currProduct = allProductsCbo.SelectedItem as Product;
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete {currProduct.Title} for ${currProduct.Price} from the database?",
+                            "Warning",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning);
+            if(result == DialogResult.Yes)
+            {
+                ProductDb.Delete(currProduct);
+                populateProductComboBox();
+            }
         }
     }
 }
