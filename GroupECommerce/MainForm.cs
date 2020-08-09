@@ -35,6 +35,11 @@ namespace GroupECommerce
 		{
             UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem);
             updateForm.ShowDialog();
-		}
+
+            // This is temporary
+            List<Product> allProducts = ProductDb.GetAllProducts();
+
+            allProductsCbo.DataSource = allProducts;
+        }
 	}
 }

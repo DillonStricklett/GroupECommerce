@@ -30,7 +30,8 @@ namespace GroupECommerce
 
 		private void updateBtn_Click(object sender, EventArgs e)
 		{
-			
+			if (UpdateProductEntry())
+				Close();
 		}
 
 		private bool UpdateProductEntry()
