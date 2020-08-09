@@ -32,5 +32,34 @@ namespace GroupECommerce
 		{
 			
 		}
+
+		private bool UpdateProductEntry()
+		{
+			string title = titleBox.Text;
+			if (String.IsNullOrWhiteSpace(title))
+			{
+				MessageBox.Show("Title cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			string category = catBox.Text;
+			if (String.IsNullOrWhiteSpace(category))
+			{
+				MessageBox.Show("Category cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (!double.TryParse(priceBox.Text, out double price))
+			{
+				MessageBox.Show("Price must be a number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			product.Title = titleBox.Text;
+			product.Price = price;
+			product.Category = category;
+			ProductDb.Update(product);
+			return true;
+		}
 	}
 }
