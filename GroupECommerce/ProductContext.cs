@@ -4,7 +4,7 @@ namespace GroupECommerce
     using System.Data.Entity;
     using System.Linq;
 
-    public class ProductContext : DbContext
+    public class ProductContext : DbContext, IProductContext
     {
         // Your context has been configured to use a 'ProductContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
