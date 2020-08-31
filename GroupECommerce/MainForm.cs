@@ -12,14 +12,17 @@ namespace GroupECommerce
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private readonly IProductContext context;
+
+        public MainForm(IProductContext _context)
         {
+            context = _context;
             InitializeComponent();
         }
 
 		private void addProductBtn_Click(object sender, EventArgs e)
 		{
-            AddProduct secondForm = new AddProduct();
+            AddProduct secondForm = new AddProduct(context);
             secondForm.FormClosed += SecondForm_FormClosed;
             secondForm.Show();
 
@@ -35,9 +38,9 @@ namespace GroupECommerce
             populateProductComboBox();
         }
 
-        private void populateProductComboBox()
+        private async void populateProductComboBox()
         {
-            List<Product> allProducts = ProductDb.GetAllProducts();
+            List<Product> allProducts = await ProductDb.GetAllProducts(context);
 
             allProductsCbo.DataSource = allProducts;
             allProductsCbo.DisplayMember = nameof(Product.Title);
@@ -45,13 +48,13 @@ namespace GroupECommerce
 
 		private void updateProductBtn_Click(object sender, EventArgs e)
 		{
-            UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem);
+            UpdateProduct updateForm = new UpdateProduct((Product)allProductsCbo.SelectedItem, context);
             updateForm.ShowDialog();
 
             populateProductComboBox();
         }
 
-        private void deleteProductBtn_Click(object sender, EventArgs e)
+        private async void deleteProductBtn_Click(object sender, EventArgs e)
         {
             Product currProduct = allProductsCbo.SelectedItem as Product;
             DialogResult result = MessageBox.Show($"Are you sure you want to delete {currProduct.Title} for ${currProduct.Price} from the database?",
@@ -60,7 +63,7 @@ namespace GroupECommerce
                             MessageBoxIcon.Warning);
             if(result == DialogResult.Yes)
             {
-                ProductDb.Delete(currProduct);
+                await ProductDb.Delete(context, currProduct);
                 populateProductComboBox();
             }
         }

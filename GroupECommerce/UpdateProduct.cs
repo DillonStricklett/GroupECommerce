@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace GroupECommerce
 {
 	public partial class UpdateProduct : Form
 	{
-		public UpdateProduct(Product product)
+		private readonly IProductContext context;
+
+		public UpdateProduct(Product product, IProductContext _context)
 		{
+			context = _context;
 			InitializeComponent();
 			this.product = product;
 			InitializeUpdate();
@@ -59,7 +63,7 @@ namespace GroupECommerce
 			product.Title = titleBox.Text;
 			product.Price = price;
 			product.Category = category;
-			ProductDb.Update(product);
+			ProductDb.Update(context, product);
 			return true;
 		}
 	}

@@ -12,8 +12,11 @@ namespace GroupECommerce
 {
 	public partial class AddProduct : Form
 	{
-		public AddProduct()
+		private readonly IProductContext context;
+
+		public AddProduct(IProductContext _context)
 		{
+			context = _context;
 			InitializeComponent();
 		}
 
@@ -52,7 +55,7 @@ namespace GroupECommerce
 			};
 
 			// Adds product object to database
-			ProductDb.Add(product);
+			ProductDb.Add(context, product);
 
 			// Displays success message and clears textboxs
 			MessageBox.Show("Product was added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
