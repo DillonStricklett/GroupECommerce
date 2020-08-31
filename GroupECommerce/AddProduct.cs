@@ -20,7 +20,7 @@ namespace GroupECommerce
 			InitializeComponent();
 		}
 
-		private void addProdBtn_Click(object sender, EventArgs e)
+		private async void addProdBtn_Click(object sender, EventArgs e)
 		{
 
 			// Checks if title and category are null or whitespace
@@ -55,7 +55,7 @@ namespace GroupECommerce
 			};
 
 			// Adds product object to database
-			ProductDb.Add(context, product);
+			await ProductDb.Add(context, product);
 
 			// Displays success message and clears textboxs
 			MessageBox.Show("Product was added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

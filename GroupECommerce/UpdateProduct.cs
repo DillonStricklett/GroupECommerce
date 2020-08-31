@@ -32,13 +32,13 @@ namespace GroupECommerce
 			catBox.Text = product.Category;
 		}
 
-		private void updateBtn_Click(object sender, EventArgs e)
+		private async void updateBtn_Click(object sender, EventArgs e)
 		{
-			if (UpdateProductEntry())
+			if (await UpdateProductEntry())
 				Close();
 		}
 
-		private bool UpdateProductEntry()
+		private async Task<bool> UpdateProductEntry()
 		{
 			string title = titleBox.Text;
 			if (String.IsNullOrWhiteSpace(title))
@@ -63,7 +63,7 @@ namespace GroupECommerce
 			product.Title = titleBox.Text;
 			product.Price = price;
 			product.Category = category;
-			ProductDb.Update(context, product);
+			await ProductDb.Update(context, product);
 			return true;
 		}
 	}
